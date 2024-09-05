@@ -1,0 +1,20 @@
+* {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.Button {
+  font-weight: bold;
+  min-width: 100px;
+  font-size: 20px;
+  height: 35px;
+  background-color: rgb(88, 141, 255);
+  border-style: none;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+.Button:hover {
+  background-color: rgb(27, 99, 255);
+  transform: scale(0.97);
+  cursor: pointer;
+}
