@@ -1,0 +1,42 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Courier New", Courier, monospace;
+  color: white;
+}
+
+h1 span {
+  color: rgb(58, 101, 182);
+  padding-right: 5px;
+}
+header {
+  display: flex;
+  outline: 1px solid red;
+  background-color: rgba(0, 0, 0, 0.507);
+  min-height: 100px;
+  min-width: 100%;
+  gap: 30px;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  background-color: rgb(58, 101, 182);
+  padding: 15px;
+  border-radius: 5px;
+  list-style-type: none;
+}
+
+.create-button {
+  width: 10%;
+  font-size: 20px;
+  height: 50px;
+  background-color: rgb(58, 101, 182);
+  border-style: none;
+  border-radius: 5px;
+}
