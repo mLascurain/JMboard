@@ -1,14 +1,10 @@
-import { TaskCard } from "./components/TaskCard/TaskCard";
+import "./App.css";
+import KanbanBoard from "./components/KanbanBoard/KanbanBoard.jsx";
 function App() {
   return (
-    <>  
-    <div style={{ display: "flex", flexWrap: "wrap", flexDirection: "row", gap: "10px", marginLeft: "10px" }}>
-      <TaskCard title="Task 1" description="This is the first task" completed={false} />
-      <TaskCard title="Task 1" description="This is the first task" completed={false} />
-      <TaskCard title="Task 1" description="This is the first task" completed={false} />
-      <TaskCard title="Task 1" description="This is the first task" completed={false} />
+    <div className="App">
+      <KanbanBoard />
     </div>
-    </>
   );
 }
 export default App;

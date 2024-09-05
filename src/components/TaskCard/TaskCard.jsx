@@ -1,15 +1,15 @@
+/* eslint-disable react/prop-types */
+// eslint-disable-next-line no-unused-vars
+import React from "react";
 import "./TaskCard.css";
-import PropTypes from "prop-types";
-export function TaskCard({title, description, completed}) {
-    return (
+
+const TaskCard = ({ task, onDelete }) => {
+  return (
     <div className="task-card">
-      <h2>{title}</h2>
-      <p>{description}</p>
-      <p>Completed: {completed ? 'Yes' : 'No'}</p>
+      <h3>{task.title}</h3>
+      <button onClick={() => onDelete(task.id)}>Eliminar</button>
     </div>
   );
-}
+};
 
-TaskCard.propTypes = {
-    title: PropTypes.string.isRequired,
-}
+export default TaskCard;
