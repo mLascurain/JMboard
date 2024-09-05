@@ -2,8 +2,13 @@
   margin: 20px;
 }
 
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+}
 .column {
-  border: 1px solid rgb(88, 141, 255);
+  border: 2px solid rgb(88, 141, 255);
+  border-radius: 4px;
   padding: 10px;
   margin: 10px;
   display: flex;
@@ -26,14 +31,47 @@
 }
 
 .column-header {
+  width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+.column-header button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-style: none;
+  color: white;
+  padding: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: transparent;
+}
+.column-header button svg:hover {
+  transition: 0.2s;
+}
+.column-header button svg:hover {
+  color: red;
 }
 
 .column-input {
   display: flex;
   justify-content: center;
-  align-items: end;
+  align-items: center;
+}
+
+.column-input input {
+  padding-left: 10px;
+  height: 100%;
+}
+
+.add-task {
+  height: 100%;
+  cursor: pointer;
+}
+.add-task svg {
+  width: 25px;
+  height: 100%;
 }
 
 .task-card {

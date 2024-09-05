@@ -9,6 +9,29 @@
   flex-direction: row;
   justify-content: space-between;
 }
+.task-card:hover {
+  background: rgba(88, 141, 255, 0.281);
+}
+.task-card button {
+  border-style: none;
+  color: white;
+  padding: 2px 5px;
+  font-weight: bolder;
+  background-color: transparent;
+}
+
+.task-card button svg {
+  width: 25px;
+  height: 100%;
+  cursor: pointer;
+}
+.add-task {
+  border-style: none;
+  color: white;
+  padding: 2px 5px;
+  font-weight: bolder;
+  background-color: transparent;
+}
 
 h2 {
   font-size: large;
