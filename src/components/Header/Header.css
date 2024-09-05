@@ -5,38 +5,53 @@
 }
 
 body {
-  font-family: "Courier New", Courier, monospace;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: white;
 }
 
 h1 span {
-  color: rgb(58, 101, 182);
-  padding-right: 5px;
+  color: rgb(88, 141, 255);
 }
+h1 {
+  margin-left: 15px;
+  transition: 0.2s;
+  font-size: 40px;
+}
+h1:hover {
+  transform: scale(0.97);
+  cursor: pointer;
+}
+
 header {
+  padding: 10px;
   display: flex;
-  outline: 1px solid red;
+  justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.507);
   min-height: 100px;
   min-width: 100%;
-  gap: 30px;
+  align-items: center;
+}
+
+header div {
+  display: flex;
+  gap: 20px;
   align-items: center;
 }
 
 .menu {
   display: flex;
-  align-items: center;
-  background-color: rgb(58, 101, 182);
-  padding: 15px;
-  border-radius: 5px;
+  align-items: end;
+  justify-content: start;
+  gap: 10px;
+  font-size: 15px;
+  border-radius: 4px;
   list-style-type: none;
+  min-height: 40px;
 }
 
-.create-button {
-  width: 10%;
-  font-size: 20px;
-  height: 50px;
-  background-color: rgb(58, 101, 182);
-  border-style: none;
-  border-radius: 5px;
+.menu li a {
+  border-radius: 4px;
+  font-weight: 600;
+  color: rgb(88, 141, 255);
+  text-decoration: none;
 }
