@@ -3,13 +3,40 @@ import React, { useState } from "react";
 import Column from "../Column/Column";
 
 const KanbanBoard = () => {
-  const [columns, setColumns] = useState([]);
+  const generateId = () => {
+    return `${Date.now()}${Math.floor(Math.random() * 1000000)}`;
+  };
+
+  const [columns, setColumns] = useState([
+    {
+      id: generateId(),
+      title: "To-Do",
+      tasks: [
+        { id: generateId(), title: "Buy groceries" },
+        { id: generateId(), title: "Do laundry" },
+        { id: generateId(), title: "Clean house" },
+      ],
+    },
+    {
+      id: generateId(),
+      title: "In Progress",
+      tasks: [
+        { id: generateId(), title: "Learn React" },
+        { id: generateId(), title: "Learn Redux" },
+      ],
+    },
+    {
+      id: generateId(),
+      title: "Done",
+      tasks: [{ id: generateId(), title: "Call mom" }],
+    },
+  ]);
   const [columnTitle, setColumnTitle] = useState("");
 
   const addColumn = () => {
     if (columnTitle.trim()) {
       const newColumn = {
-        id: Date.now(),
+        id: generateId(),
         title: columnTitle,
         tasks: [],
       };
@@ -27,7 +54,7 @@ const KanbanBoard = () => {
       columns.map((column) => {
         if (column.id === columnId) {
           const newTask = {
-            id: Date.now(),
+            id: generateId(),
             title: taskTitle,
           };
           return { ...column, tasks: [...column.tasks, newTask] };
