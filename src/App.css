@@ -1,0 +1,46 @@
+.kanban-board {
+  margin: 20px;
+}
+
+.column {
+  border: 1px solid rgb(88, 141, 255);
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.delete-column {
+  border-style: none;
+  color: white;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.add-task {
+  border-style: none;
+  color: white;
+  padding: 2px 5px;
+  font-weight: bold;
+}
+
+.column-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.column-input {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+.task-card {
+  padding: 10px;
+  margin: 10px;
+}
+
+input {
+  margin-right: 10px;
+}
