@@ -1,9 +1,3 @@
-body {
-  display: grid;
-  min-height: 100vh;
-  grid-template-rows: auto 1fr auto;
-}
-
 .board-input {
   display: flex;
   align-items: center;
@@ -23,13 +17,15 @@ body {
 }
 .board-input input {
   padding-left: 10px;
-  height: 100%;
+  height: 40px;
 }
 
 .kanban-board {
   display: flex;
-  flex-wrap: wrap;
+  min-height: calc(100dvh - 100px - 65px);
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 10px;
   align-items: start;
+  margin: 20px;
 }
