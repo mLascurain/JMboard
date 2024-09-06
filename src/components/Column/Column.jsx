@@ -7,6 +7,12 @@ import TaskCard from "../TaskCard/TaskCard";
 const Column = ({ column, onDeleteColumn, onAddTask, onDeleteTask }) => {
   const [taskTitle, setTaskTitle] = useState("");
 
+  const handleEnterPress = (func) => (e) => {
+    if (e.key === "Enter") {
+      func();
+    }
+  };
+
   const addTask = () => {
     if (taskTitle.trim()) {
       onAddTask(column.id, taskTitle);
@@ -27,7 +33,7 @@ const Column = ({ column, onDeleteColumn, onAddTask, onDeleteTask }) => {
             width="20"
             height="20"
             fill="currentColor"
-            class="bi bi-trash"
+            className="bi bi-trash"
             viewBox="0 0 16 16"
           >
             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
@@ -49,6 +55,7 @@ const Column = ({ column, onDeleteColumn, onAddTask, onDeleteTask }) => {
           type="text"
           value={taskTitle}
           onChange={(e) => setTaskTitle(e.target.value)}
+          onKeyDown={handleEnterPress(addTask)}
           placeholder="Título de la tarea"
         />
         <button className="add-task" onClick={addTask}>
@@ -57,7 +64,7 @@ const Column = ({ column, onDeleteColumn, onAddTask, onDeleteTask }) => {
             width="16"
             height="16"
             fill="currentColor"
-            class="bi bi-file-plus"
+            className="bi bi-file-plus"
             viewBox="0 0 16 16"
           >
             <path d="M8.5 6a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V10a.5.5 0 0 0 1 0V8.5H10a.5.5 0 0 0 0-1H8.5z" />
