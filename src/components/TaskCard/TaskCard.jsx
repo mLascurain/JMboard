@@ -13,7 +13,7 @@ const TaskCard = ({ task, onDelete }) => {
           width="16"
           height="16"
           fill="currentColor"
-          class="bi bi-file-minus"
+          className="bi bi-file-minus"
           viewBox="0 0 16 16"
         >
           <path d="M5.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5" />

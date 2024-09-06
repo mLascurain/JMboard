@@ -1,5 +1,75 @@
 .column {
-  min-width: 320px;
+  min-width: 280px;
   display: flex;
   align-items: center;
+  border: 2px solid rgb(88, 141, 255);
+  border-radius: 4px;
+  padding: 10px;
+  margin: 10px;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.delete-column {
+  border-style: none;
+  color: white;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.add-task {
+  border-style: none;
+  color: white;
+  padding: 2px 5px;
+  font-weight: bold;
+  height: 100%;
+  cursor: pointer;
+}
+.add-task svg {
+  width: 25px;
+  height: 100%;
+}
+
+.column h2 {
+  max-width: 135px;
+}
+
+.column-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  padding-bottom: 6px;
+  border-bottom: 2px solid rgba(40, 40, 45, 0.6);
+  overflow-wrap: break-word;
+  text-overflow: ellipsis;
+}
+
+.column-header button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-style: none;
+  color: white;
+  padding: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: transparent;
+}
+.column-header button svg:hover {
+  transition: 0.2s;
+}
+.column-header button svg:hover {
+  color: red;
+}
+
+.column-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.column-input input {
+  padding-left: 10px;
+  height: 100%;
 }
