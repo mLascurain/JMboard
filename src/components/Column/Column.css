@@ -1,0 +1,5 @@
+.column {
+  min-width: 320px;
+  display: flex;
+  align-items: center;
+}
