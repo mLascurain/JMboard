@@ -14,6 +14,10 @@
 }
 .board-input button svg {
   display: flex;
+  transition: transform 0.1s ease-in-out;
+}
+.board-input button svg:hover {
+  transform: scale(1.2);
 }
 .board-input input {
   padding-left: 10px;
