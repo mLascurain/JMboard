@@ -14,16 +14,22 @@
 }
 .board-input button svg {
   display: flex;
+  transition: transform 0.1s ease-in-out;
+}
+.board-input button svg:hover {
+  transform: scale(1.2);
 }
 .board-input input {
   padding-left: 10px;
-  height: 100%;
+  height: 40px;
 }
 
 .kanban-board {
   display: flex;
-  flex-wrap: wrap;
+  min-height: calc(100dvh - 100px - 65px);
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 10px;
   align-items: start;
+  margin: 20px;
 }
