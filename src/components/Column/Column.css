@@ -28,6 +28,10 @@
 .add-task svg {
   width: 25px;
   height: 100%;
+  transition: transform 0.1s;
+}
+.add-task svg:hover {
+  transform: scale(0.94);
 }
 
 .column h2 {

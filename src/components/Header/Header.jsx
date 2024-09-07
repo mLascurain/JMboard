@@ -9,16 +9,16 @@ export function Header() {
         </h1>
         <ul className="menu">
           <li>
-            <a href="">Boards Recientes</a>
+            <a href="">Recently Used Boards</a>
           </li>
           <li>
-            <a href="">Board Mas Utilizados</a>
+            <a href="">Most Used Boards</a>
           </li>
         </ul>
       </div>
       <div>
         <a href="">
-          <Button content={"Crear"} />
+          <Button content={"Create"} />
         </a>
       </div>
     </header>
