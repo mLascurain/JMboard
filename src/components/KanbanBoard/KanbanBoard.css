@@ -1,9 +1,3 @@
-body {
-  display: grid;
-  min-height: 100vh;
-  grid-template-rows: auto 1fr auto;
-}
-
 .board-input {
   display: flex;
   align-items: center;
