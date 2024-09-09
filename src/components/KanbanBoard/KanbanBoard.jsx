@@ -102,7 +102,7 @@ const KanbanBoard = () => {
             type="text"
             value={columnTitle}
             onChange={(e) => setColumnTitle(e.target.value)}
-            onKeyPress={handleEnterPress(addColumn)}
+            onKeyDown={handleEnterPress(addColumn)}
             placeholder="Título de la columna"
           />
           <button onClick={addColumn}>
