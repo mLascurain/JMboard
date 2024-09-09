@@ -57,6 +57,7 @@ const Column = ({ column, onDeleteColumn, onAddTask, onDeleteTask }) => {
           onChange={(e) => setTaskTitle(e.target.value)}
           onKeyDown={handleEnterPress(addTask)}
           placeholder="Título de la tarea"
+          maxLength={1125}
         />
         <button className="add-task" onClick={addTask}>
           <svg
