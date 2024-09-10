@@ -2,6 +2,7 @@
 import "./KanbanBoard.css";
 import React, { useState } from "react";
 import Column from "../Column/Column";
+import { closestCorners, DndContext } from "@dnd-kit/core";
 
 const KanbanBoard = () => {
   const generateId = () => {
@@ -89,15 +90,17 @@ const KanbanBoard = () => {
   return (
     <div className="kanban-board">
       <div className="columns">
-        {columns.map((column) => (
-          <Column
-            key={column.id}
-            column={column}
-            onDeleteColumn={deleteColumn}
-            onAddTask={addTaskToColumn}
-            onDeleteTask={deleteTaskFromColumn}
-          />
-        ))}
+        <DndContext collisionDetection={closestCorners}>
+          {columns.map((column) => (
+            <Column
+              key={column.id}
+              column={column}
+              onDeleteColumn={deleteColumn}
+              onAddTask={addTaskToColumn}
+              onDeleteTask={deleteTaskFromColumn}
+            />
+          ))}
+        </DndContext>
         <div className="board-input">
           <input
             type="text"

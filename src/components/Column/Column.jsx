@@ -3,7 +3,10 @@
 import "./Column.css";
 import React, { useState } from "react";
 import TaskCard from "../TaskCard/TaskCard";
-
+import {
+  SortableContext,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
 const Column = ({ column, onDeleteColumn, onAddTask, onDeleteTask }) => {
   const [taskTitle, setTaskTitle] = useState("");
 
@@ -42,14 +45,20 @@ const Column = ({ column, onDeleteColumn, onAddTask, onDeleteTask }) => {
         </button>
       </div>
       <div className="tasks">
-        {column.tasks.map((task) => (
-          <TaskCard
-            key={task.id}
-            task={task}
-            priority={task.priority}
-            onDelete={() => onDeleteTask(column.id, task.id)}
-          />
-        ))}
+        <SortableContext
+          items={column.tasks}
+          strategy={verticalListSortingStrategy}
+        >
+          {column.tasks.map((task) => (
+            <TaskCard
+              key={task.id}
+              id={task.id}
+              task={task}
+              priority={task.priority}
+              onDelete={() => onDeleteTask(column.id, task.id)}
+            />
+          ))}
+        </SortableContext>
       </div>
       <div className="column-input">
         <input
