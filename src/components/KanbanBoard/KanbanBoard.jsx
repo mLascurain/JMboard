@@ -19,23 +19,23 @@ const KanbanBoard = () => {
       id: generateId(),
       title: "To-Do",
       tasks: [
-        { id: generateId(), title: "Buy groceries" },
-        { id: generateId(), title: "Do laundry" },
-        { id: generateId(), title: "Clean house" },
+        { id: generateId(), title: "Buy groceries", priority: "Alta" },
+        { id: generateId(), title: "Do laundry", priority: "Media" },
+        { id: generateId(), title: "Clean house", priority: "Baja" },
       ],
     },
     {
       id: generateId(),
       title: "In Progress",
       tasks: [
-        { id: generateId(), title: "Learn React", priority: "Media" },
-        { id: generateId(), title: "Learn Redux" },
+        { id: generateId(), title: "Learn React", priority: "Alta" },
+        { id: generateId(), title: "Learn Redux", priority: "Media" },
       ],
     },
     {
       id: generateId(),
       title: "Done",
-      tasks: [{ id: generateId(), title: "Call mom" }],
+      tasks: [{ id: generateId(), title: "Call mom", priority: "Baja" }],
     },
   ]);
   const [columnTitle, setColumnTitle] = useState("");
@@ -63,6 +63,7 @@ const KanbanBoard = () => {
           const newTask = {
             id: generateId(),
             title: taskTitle,
+            priority: "Baja",
           };
           return { ...column, tasks: [...column.tasks, newTask] };
         }

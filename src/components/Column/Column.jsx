@@ -46,6 +46,7 @@ const Column = ({ column, onDeleteColumn, onAddTask, onDeleteTask }) => {
           <TaskCard
             key={task.id}
             task={task}
+            priority={task.priority}
             onDelete={() => onDeleteTask(column.id, task.id)}
           />
         ))}

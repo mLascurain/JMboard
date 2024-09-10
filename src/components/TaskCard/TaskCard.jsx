@@ -4,26 +4,30 @@ import React, { useState } from "react";
 import "./TaskCard.css";
 import { Modal } from "../Modal/Modal";
 
-const TaskCard = ({ task, onDelete }) => {
+const TaskCard = ({ task, onDelete, priority }) => {
   const [open, setOpen] = useState(false);
   const [descripcion, setDescripcion] = useState("");
   const [descripciones, setDescripciones] = useState([]);
 
   // Estado para almacenar la opción seleccionada
-  const [selectedOption, setSelectedOption] = useState("Baja"); // Puedes establecer un valor inicial si deseas
+  const [selectedOption, setSelectedOption] = useState(priority); // Puedes establecer un valor inicial si deseas
 
   // Manejar el cambio en el select
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
   };
 
-  const priority = {
-    Baja: "priority-low",
-    Media: "priority-medium",
-    Alta: "priority-high",
-  };
+  function classPriority() {
+    if (selectedOption === "Baja") {
+      return "priority-low";
+    } else if (selectedOption === "Media") {
+      return "priority-medium";
+    } else if (selectedOption === "Alta") {
+      return "priority-high";
+    }
+  }
 
-  const actualPriority = priority[selectedOption];
+  const actualPriority = classPriority();
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
