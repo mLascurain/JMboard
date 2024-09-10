@@ -28,7 +28,7 @@ const KanbanBoard = () => {
       id: generateId(),
       title: "In Progress",
       tasks: [
-        { id: generateId(), title: "Learn React" },
+        { id: generateId(), title: "Learn React", priority: "Media" },
         { id: generateId(), title: "Learn Redux" },
       ],
     },

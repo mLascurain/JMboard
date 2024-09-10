@@ -33,3 +33,9 @@
   align-items: start;
   margin: 20px;
 }
+
+.columns {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 20px;
+}

@@ -5,13 +5,15 @@
   border-radius: 4px;
   padding: 8px;
   width: 240px;
+  min-height: 80px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   overflow-wrap: break-word;
+  transition: transform 0.1s ease-in-out;
 }
 .task-card:hover {
-  background: rgba(88, 141, 255, 0.281);
+  transform: scale(0.98);
 }
 .task-card button {
   border-style: none;
@@ -30,22 +32,18 @@
 .task-card button svg:hover {
   transform: scale(0.94);
 }
-.add-task {
-  border-style: none;
-  color: white;
-  padding: 2px 5px;
-  font-weight: bolder;
-  background-color: transparent;
-}
 
 .task-card h3 {
   overflow-wrap: break-word;
   max-width: 140px;
 }
 
-h2 {
-  font-size: large;
+.priority-low {
+  border-left: 4px solid #00ff44;
 }
-p {
-  font-size: small;
+.priority-medium {
+  border-left: 4px solid #ffbb00;
+}
+.priority-high {
+  border-left: 4px solid #ff1144;
 }

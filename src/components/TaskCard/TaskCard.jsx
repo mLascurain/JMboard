@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react/prop-types */
+// eslint-disable-next-line no-unused-vars
+import React, { useState } from "react";
 import "./TaskCard.css";
 import { Modal } from "../Modal/Modal";
 
@@ -8,14 +10,20 @@ const TaskCard = ({ task, onDelete }) => {
   const [descripciones, setDescripciones] = useState([]);
 
   // Estado para almacenar la opción seleccionada
-  const [selectedOption, setSelectedOption] = useState("opcion1"); // Puedes establecer un valor inicial si deseas
+  const [selectedOption, setSelectedOption] = useState("Baja"); // Puedes establecer un valor inicial si deseas
 
   // Manejar el cambio en el select
   const handleChange = (event) => {
-    if (event.target.value === "Baja") {
-    }
     setSelectedOption(event.target.value);
   };
+
+  const priority = {
+    Baja: "priority-low",
+    Media: "priority-medium",
+    Alta: "priority-high",
+  };
+
+  const actualPriority = priority[selectedOption];
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
@@ -25,7 +33,10 @@ const TaskCard = ({ task, onDelete }) => {
 
   return (
     <>
-      <div className="task-card" onClick={() => setOpen(true)}>
+      <div
+        className={`task-card ${actualPriority}`}
+        onClick={() => setOpen(true)}
+      >
         <h3>{task.title}</h3>
         <button onClick={() => onDelete(task.id)}>
           <svg
@@ -51,7 +62,7 @@ const TaskCard = ({ task, onDelete }) => {
                 width="20"
                 height="20"
                 fill="currentColor"
-                class="bi bi-x-lg"
+                className="bi bi-x-lg"
                 viewBox="0 0 16 16"
               >
                 <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
