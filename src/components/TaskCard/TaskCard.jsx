@@ -3,12 +3,8 @@
 import React, { useState } from "react";
 import "./TaskCard.css";
 import { Modal } from "../Modal/Modal";
-import { useSortable } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
 
 const TaskCard = ({ id, task, onDelete, priority }) => {
-  const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id });
   const [open, setOpen] = useState(false);
   const [descripcion, setDescripcion] = useState("");
   const [descripciones, setDescripciones] = useState([]);
@@ -39,13 +35,8 @@ const TaskCard = ({ id, task, onDelete, priority }) => {
     }
   };
 
-  const style = {
-    transition,
-    transform: CSS.Transform.toString(transform),
-  };
-
   return (
-    <div ref={setNodeRef} {...attributes} {...listeners} style={style}>
+    <div>
       <div
         className={`task-card ${actualPriority}`}
         onClick={() => setOpen(true)}
