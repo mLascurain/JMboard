@@ -88,37 +88,17 @@ const KanbanBoard = () => {
 
   const [tasks, setTasks] = useState([]);
 
-  const handleDragEnd = (event) => {
-    const { active, over } = event;
-    if (active.id !== over.id) {
-      setTasks((prevTasks) => {
-        const activeIndex = prevTasks.findIndex(
-          (task) => task.id === active.id
-        );
-        const overIndex = prevTasks.findIndex((task) => task.id === over.id);
-        const newTasks = Array.from(prevTasks);
-        newTasks.splice(overIndex, 0, newTasks.splice(activeIndex, 1)[0]);
-        return newTasks;
-      });
-    }
-  };
-
   return (
     <div className="kanban-board">
       <div className="columns">
         {columns.map((column) => (
-          <DndContext
-            onDragEnd={handleDragEnd}
-            collisionDetection={closestCorners}
-          >
-            <Column
-              key={column.id}
-              column={column}
-              onDeleteColumn={deleteColumn}
-              onAddTask={addTaskToColumn}
-              onDeleteTask={deleteTaskFromColumn}
-            />
-          </DndContext>
+          <Column
+            key={column.id}
+            column={column}
+            onDeleteColumn={deleteColumn}
+            onAddTask={addTaskToColumn}
+            onDeleteTask={deleteTaskFromColumn}
+          />
         ))}
 
         <div className="board-input">
