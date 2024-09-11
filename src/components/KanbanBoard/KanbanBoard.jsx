@@ -121,6 +121,17 @@ const KanbanBoard = () => {
     );
   };
 
+  const updateColumnTitle = (columnId, newTitle) => {
+    setColumns(
+      columns.map((column) => {
+        if (column.id === columnId) {
+          return { ...column, title: newTitle };
+        }
+        return column;
+      })
+    );
+  };
+
   return (
     <div className="kanban-board">
       <div className="columns">
@@ -131,6 +142,7 @@ const KanbanBoard = () => {
             onDeleteColumn={deleteColumn}
             onAddTask={addTaskToColumn}
             onDeleteTask={deleteTaskFromColumn}
+            updateColumnTitle={updateColumnTitle}
           />
         ))}
 

@@ -4,8 +4,15 @@ import "./Column.css";
 import React, { useState } from "react";
 import TaskCard from "../TaskCard/TaskCard";
 
-const Column = ({ column, onDeleteColumn, onAddTask, onDeleteTask }) => {
+const Column = ({
+  column,
+  onDeleteColumn,
+  onAddTask,
+  onDeleteTask,
+  updateColumnTitle,
+}) => {
   const [taskTitle, setTaskTitle] = useState("");
+
   const handleEnterPress = (func) => (e) => {
     if (e.key === "Enter") {
       func();
@@ -43,10 +50,23 @@ const Column = ({ column, onDeleteColumn, onAddTask, onDeleteTask }) => {
     setTasks(updatedTasks);
   };
 
+  const [editMode, setEditMode] = useState(false);
+
   return (
     <div className="column">
       <div className="column-header">
-        <h2>{column.title}</h2>
+        <h2 onClick={() => setEditMode(true)}>
+          {!editMode && column.title}
+          {editMode && (
+            <input
+              autoFocus
+              onChange={(e) => updateColumnTitle(column.id, e.target.value)}
+              value={column.title}
+              onBlur={() => setEditMode(false)}
+              onKeyDown={handleEnterPress(() => setEditMode(false))}
+            />
+          )}
+        </h2>
         <button
           className="delete-column"
           onClick={() => onDeleteColumn(column.id)}
