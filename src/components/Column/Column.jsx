@@ -21,6 +21,10 @@ const Column = ({ column, onDeleteColumn, onAddTask, onDeleteTask }) => {
 
   const [tasks, setTasks] = useState(column.tasks);
 
+  /**
+   * Actualiza la lista de tareas de la columna
+   * @param {object} updatedTask - tarea actualizada
+   */
   const reorderTasks = (updatedTask) => {
     // Crea una nueva lista de tareas con la tarea actualizada
     const updatedTasks = column.tasks.map((task) => {

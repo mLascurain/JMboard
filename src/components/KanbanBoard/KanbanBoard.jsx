@@ -4,6 +4,12 @@ import React, { useState } from "react";
 import Column from "../Column/Column";
 
 const KanbanBoard = () => {
+  /**
+   * Genera un id unico para cada columna o tarea
+   * se utiliza el timestamp del momento en que se genera
+   * y un numero aleatorio entre 0 y 999999
+   * @returns {string} un id unico
+   */
   const generateId = () => {
     return `${Date.now()}${Math.floor(Math.random() * 1000000)}`;
   };
@@ -40,6 +46,11 @@ const KanbanBoard = () => {
   ]);
   const [columnTitle, setColumnTitle] = useState("");
 
+  /**
+   * Agrega una columna a la lista de columnas
+   * Se crea una columna con el titulo introducido por el usuario
+   * y se agrega a la lista de columnas
+   */
   const addColumn = () => {
     if (columnTitle.trim()) {
       const newColumn = {
@@ -52,10 +63,27 @@ const KanbanBoard = () => {
     }
   };
 
+  const [tasks, setTasks] = useState(columns.tasks);
+
+  /**
+   * Elimina una columna de la lista de columnas
+   * Se elimina la columna con el id especificado
+   * y se eliminan todas las tareas que pertenecen a esa columna
+   * @param {string} columnId - id de la columna a eliminar
+   */
   const deleteColumn = (columnId) => {
     setColumns(columns.filter((column) => column.id !== columnId));
+    const newTasks = tasks.filter((t) => t.columnId !== columnId);
+    setTasks(newTasks);
   };
 
+  /**
+   * Agrega una tarea a una columna
+   * Se crea una tarea con el titulo introducido por el usuario
+   * y se agrega a la columna especificada
+   * @param {string} columnId - id de la columna
+   * @param {string} taskTitle - titulo de la tarea
+   */
   const addTaskToColumn = (columnId, taskTitle) => {
     setColumns(
       columns.map((column) => {
@@ -72,6 +100,13 @@ const KanbanBoard = () => {
     );
   };
 
+  /**
+   * Elimina una tarea de una columna
+   * Se elimina la tarea con el id especificado
+   * de la columna con el id especificado
+   * @param {string} columnId - id de la columna
+   * @param {string} taskId - id de la tarea
+   */
   const deleteTaskFromColumn = (columnId, taskId) => {
     setColumns(
       columns.map((column) => {
@@ -85,8 +120,6 @@ const KanbanBoard = () => {
       })
     );
   };
-
-  const [tasks, setTasks] = useState([]);
 
   return (
     <div className="kanban-board">
