@@ -2,7 +2,6 @@
 import "./KanbanBoard.css";
 import React, { useState } from "react";
 import Column from "../Column/Column";
-import { closestCorners, DndContext } from "@dnd-kit/core";
 
 const KanbanBoard = () => {
   const generateId = () => {
