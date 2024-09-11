@@ -52,17 +52,6 @@ const Column = ({
 
   const [editMode, setEditMode] = useState(false);
 
-  const updateTaskTitle = (taskId, newTitle) => {
-    setTasks(
-      tasks.map((task) => {
-        if (task.id === taskId) {
-          return { ...task, title: newTitle };
-        }
-        return task;
-      })
-    );
-  };
-
   return (
     <div className="column">
       <div className="column-header">
@@ -106,7 +95,6 @@ const Column = ({
               priority={task.priority}
               onDelete={() => onDeleteTask(column.id, task.id)}
               onReorder={reorderTasks}
-              updateTaskTitle={updateTaskTitle}
             />
           ))}
       </div>
