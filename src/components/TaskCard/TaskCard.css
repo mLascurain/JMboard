@@ -40,10 +40,13 @@
 
 .priority-low {
   border-left: 4px solid #00ff44;
+  box-shadow: inset 10px 0 5px -9px #00ff44;
 }
 .priority-medium {
   border-left: 4px solid #ffbb00;
+  box-shadow: inset 10px 0 5px -9px #ffbb00;
 }
 .priority-high {
   border-left: 4px solid #ff1144;
+  box-shadow: inset 10px 0 5px -9px #ff1144;
 }
