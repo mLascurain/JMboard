@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
@@ -10,6 +11,10 @@ const TaskCard = ({ id, task, onDelete, priority, onReorder }) => {
   const [descripciones, setDescripciones] = useState([]);
   const [selectedOption, setSelectedOption] = useState(priority);
 
+  /**
+   * Actualiza la prioridad de la tarea
+   * @param {event} event - evento de cambio de valor en el select
+   */
   const handleChange = (event) => {
     const newPriority = event.target.value;
     setSelectedOption(newPriority);
@@ -17,6 +22,10 @@ const TaskCard = ({ id, task, onDelete, priority, onReorder }) => {
     onReorder(updatedTask);
   };
 
+  /**
+   * Devuelve una clase CSS dependiendo de la prioridad de la tarea
+   * @returns {string} una clase CSS que representa la prioridad de la tarea
+   */
   function classPriority() {
     if (selectedOption === "0") {
       return "priority-low";
