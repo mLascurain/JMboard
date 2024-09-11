@@ -4,25 +4,25 @@ import React, { useState } from "react";
 import "./TaskCard.css";
 import { Modal } from "../Modal/Modal";
 
-const TaskCard = ({ id, task, onDelete, priority }) => {
+const TaskCard = ({ id, task, onDelete, priority, onReorder }) => {
   const [open, setOpen] = useState(false);
   const [descripcion, setDescripcion] = useState("");
   const [descripciones, setDescripciones] = useState([]);
+  const [selectedOption, setSelectedOption] = useState(priority);
 
-  // Estado para almacenar la opción seleccionada
-  const [selectedOption, setSelectedOption] = useState(priority); // Puedes establecer un valor inicial si deseas
-
-  // Manejar el cambio en el select
   const handleChange = (event) => {
-    setSelectedOption(event.target.value);
+    const newPriority = event.target.value;
+    setSelectedOption(newPriority);
+    const updatedTask = { ...task, priority: newPriority };
+    onReorder(updatedTask);
   };
 
   function classPriority() {
-    if (selectedOption === "Baja") {
+    if (selectedOption === "0") {
       return "priority-low";
-    } else if (selectedOption === "Media") {
+    } else if (selectedOption === "1") {
       return "priority-medium";
-    } else if (selectedOption === "Alta") {
+    } else if (selectedOption === "2") {
       return "priority-high";
     }
   }
@@ -94,9 +94,9 @@ const TaskCard = ({ id, task, onDelete, priority }) => {
                 value={selectedOption}
                 onChange={handleChange}
               >
-                <option value="Baja">Baja</option>
-                <option value="Media">Media</option>
-                <option value="Alta">Alta</option>
+                <option value="0">Baja</option>
+                <option value="1">Media</option>
+                <option value="2">Alta</option>
               </select>
             </span>
           </div>

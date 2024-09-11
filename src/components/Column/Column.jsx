@@ -6,7 +6,6 @@ import TaskCard from "../TaskCard/TaskCard";
 
 const Column = ({ column, onDeleteColumn, onAddTask, onDeleteTask }) => {
   const [taskTitle, setTaskTitle] = useState("");
-
   const handleEnterPress = (func) => (e) => {
     if (e.key === "Enter") {
       func();
@@ -18,6 +17,26 @@ const Column = ({ column, onDeleteColumn, onAddTask, onDeleteTask }) => {
       onAddTask(column.id, taskTitle);
       setTaskTitle("");
     }
+  };
+
+  const [tasks, setTasks] = useState(column.tasks);
+
+  const reorderTasks = (updatedTask) => {
+    // Crea una nueva lista de tareas con la tarea actualizada
+    const updatedTasks = column.tasks.map((task) => {
+      if (task.id === updatedTask.id) {
+        task.priority = updatedTask.priority;
+        return updatedTask;
+      } else {
+        return task;
+      }
+    });
+
+    // Reordena las tareas por prioridad
+    updatedTasks.sort((a, b) => b.priority - a.priority);
+
+    // Actualiza el estado de las tareas
+    setTasks(updatedTasks);
   };
 
   return (
@@ -42,15 +61,18 @@ const Column = ({ column, onDeleteColumn, onAddTask, onDeleteTask }) => {
         </button>
       </div>
       <div className="tasks">
-        {column.tasks.map((task) => (
-          <TaskCard
-            key={task.id}
-            id={task.id}
-            task={task}
-            priority={task.priority}
-            onDelete={() => onDeleteTask(column.id, task.id)}
-          />
-        ))}
+        {column.tasks
+          .sort((a, b) => b.priority - a.priority)
+          .map((task) => (
+            <TaskCard
+              key={task.id}
+              id={task.id}
+              task={task}
+              priority={task.priority}
+              onDelete={() => onDeleteTask(column.id, task.id)}
+              onReorder={reorderTasks}
+            />
+          ))}
       </div>
       <div className="column-input">
         <input
