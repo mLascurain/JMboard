@@ -23,6 +23,7 @@ const Column = ({
     if (taskTitle.trim()) {
       onAddTask(column.id, taskTitle);
       setTaskTitle("");
+      orderFilter();
     }
   };
 
@@ -52,6 +53,19 @@ const Column = ({
   };
 
   const [editMode, setEditMode] = useState(false);
+  const [check, setCheck] = useState(true);
+
+  const orderFilter = () => {
+    if (check) {
+      const orderMinor = column.tasks.sort((a, b) => a.priority - b.priority);
+      setTasks(orderMinor);
+      return column.tasks;
+    } else {
+      const orderMajor = column.tasks.sort((a, b) => b.priority - a.priority);
+      setTasks(orderMajor);
+      return column.tasks;
+    }
+  };
 
   return (
     <div className="column">
@@ -68,6 +82,11 @@ const Column = ({
             />
           )}
         </h2>
+        <input
+          type="checkbox"
+          onClick={orderFilter}
+          onChange={(e) => setCheck(e.target.checked)}
+        />
         <button
           className="delete-column"
           onClick={() => onDeleteColumn(column.id)}
@@ -87,7 +106,7 @@ const Column = ({
       </div>
       <div className="tasks">
         {column.tasks
-          .sort((a, b) => b.priority - a.priority)
+          .sort((a, b) => a.priority - b.priority)
           .map((task) => (
             <TaskCard
               key={task.id}
