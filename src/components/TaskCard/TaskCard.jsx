@@ -10,7 +10,6 @@ const TaskCard = ({ id, task, onDelete, priority, onReorder }) => {
   const [descripcion, setDescripcion] = useState("");
   const [descripciones, setDescripciones] = useState([]);
   const [selectedOption, setSelectedOption] = useState(priority);
-
   /**
    * Actualiza la prioridad de la tarea
    * @param {event} event - evento de cambio de valor en el select
@@ -19,6 +18,16 @@ const TaskCard = ({ id, task, onDelete, priority, onReorder }) => {
     const newPriority = event.target.value;
     setSelectedOption(newPriority);
     const updatedTask = { ...task, priority: newPriority };
+    onReorder(updatedTask);
+  };
+
+  /**
+   * Actualiza el nombre de la tarea
+   * @param {event} event - evento de cambio de valor en el input de tipo texto
+   */
+  const handleChangeName = (event) => {
+    const newTitle = event.target.value;
+    const updatedTask = { ...task, title: newTitle };
     onReorder(updatedTask);
   };
 
@@ -37,10 +46,16 @@ const TaskCard = ({ id, task, onDelete, priority, onReorder }) => {
   }
 
   const actualPriority = classPriority();
+  const [editMode, setEditMode] = useState(false);
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       setOpen(false);
+    }
+  };
+  const handleEnterPress = (func) => (e) => {
+    if (e.key === "Enter") {
+      func();
     }
   };
 
@@ -68,7 +83,18 @@ const TaskCard = ({ id, task, onDelete, priority, onReorder }) => {
       {open && (
         <Modal open={open} onClose={setOpen}>
           <div className="modal-header">
-            <h2>{task.title}</h2>
+            <h2 onClick={() => setEditMode(true)}>
+              {!editMode && task.title}
+              {editMode && (
+                <input
+                  type="text"
+                  autoFocus
+                  onChange={(e) => handleChangeName(e)}
+                  onBlur={() => setEditMode(false)}
+                  onKeyDown={handleEnterPress(() => setEditMode(false))}
+                />
+              )}
+            </h2>
             <button onClick={() => setOpen(false)}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
