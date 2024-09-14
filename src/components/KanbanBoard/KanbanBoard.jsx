@@ -26,7 +26,7 @@ const KanbanBoard = () => {
       title: "To-Do",
       tasks: [
         { id: generateId(), title: "Buy groceries", priority: "2" },
-        { id: generateId(), title: "Do laundry", priority: "1" },
+        { id: generateId(), title: "Do laundry", priority: "0" },
         { id: generateId(), title: "Clean house", priority: "1" },
       ],
     },
@@ -34,8 +34,8 @@ const KanbanBoard = () => {
       id: generateId(),
       title: "In Progress",
       tasks: [
-        { id: generateId(), title: "Learn React", priority: "1" },
-        { id: generateId(), title: "Learn Redux", priority: "1" },
+        { id: generateId(), title: "Learn React", priority: "0" },
+        { id: generateId(), title: "Learn Redux", priority: "2" },
       ],
     },
     {
@@ -124,7 +124,7 @@ const KanbanBoard = () => {
   const updateColumnTitle = (columnId, newTitle) => {
     setColumns(
       columns.map((column) => {
-        if (column.id === columnId) {
+        if (column.id === columnId && newTitle !== "") {
           return { ...column, title: newTitle };
         }
         return column;

@@ -27,8 +27,12 @@ const TaskCard = ({ id, task, onDelete, priority, onReorder }) => {
    */
   const handleChangeName = (event) => {
     const newTitle = event.target.value;
-    const updatedTask = { ...task, title: newTitle };
-    onReorder(updatedTask);
+    if (newTitle !== "") {
+      const updatedTask = { ...task, title: newTitle };
+      onReorder(updatedTask);
+    } else {
+      setEditMode(false);
+    }
   };
 
   /**
