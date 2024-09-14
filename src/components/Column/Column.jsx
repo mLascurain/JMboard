@@ -37,6 +37,7 @@ const Column = ({
     const updatedTasks = column.tasks.map((task) => {
       if (task.id === updatedTask.id) {
         task.priority = updatedTask.priority;
+        task.title = updatedTask.title;
         return updatedTask;
       } else {
         return task;
